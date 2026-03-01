@@ -1,5 +1,6 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,9 @@ public class TaskThreeTests {
     private KafkaProducer kafkaProducer;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private UserPopulator userPopulator;
 
     @Autowired
@@ -31,6 +35,14 @@ public class TaskThreeTests {
             kafkaProducer.send(transactionLine);
         }
         Thread.sleep(2000);
+//        System.out.println(
+//                userRepository.findAll()
+//                        .stream()
+//                        .filter(u -> u.getUsername().equals("waldorf"))
+//                        .findFirst()
+//                        .get()
+//                        .getBalance()
+//        );
 
 
         logger.info("----------------------------------------------------------");
